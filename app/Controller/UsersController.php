@@ -1,3 +1,4 @@
+<?php
 class UsersController extends AppController{
 
 	public function login(){
@@ -16,3 +17,4 @@ class UsersController extends AppController{
 	}
 
 }
+?>
