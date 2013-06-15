@@ -1,3 +1,5 @@
+<?php
+
 class LogsController extends AppController{
 
 	public function index(){
@@ -13,3 +15,4 @@ class LogsController extends AppController{
 	}
 
 }
+?>
