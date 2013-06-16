@@ -30,8 +30,8 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('cake.generic');
-		echo $this->Html->css('inuit/css/inuit.css/style.min');
+//		echo $this->Html->css('cake.generic');
+		echo $this->Html->css('inuit/css/style.min');
 
 
 		echo $this->fetch('meta');
@@ -48,8 +48,8 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		<div id="header">
           <ul class="nav nav--block top">
             <li><a href=#>Home</a></li>
-            <li></li>
-            <li></li>
+            <li><a href=#>記録する</a></li>
+            <li><a href=#>記録を見る</a></li>
 		  </ul>
         </div>
 		<div id="content">

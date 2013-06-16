@@ -1,0 +1,9 @@
+<?php
+
+App::uses('php-markdown', 'Vendor/php-markdown');
+
+class MarkdownHelper extends AppHelper {
+	public function parse($text){
+		return $this->output(Markdown($text));
+	}
+}
