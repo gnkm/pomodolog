@@ -3,7 +3,21 @@
 class LogsController extends AppController{
 
 	public function index(){
-
+		//3:00になったら表示をリセット
+		if (date("G") < 3) {
+			$start = date("Y-m-d 03:00:00", time() - 60*60*24);
+		} else {
+			$start = date("Y-m-d 03:00:00");
+		}
+		$end = date("Y-m-d 00:00:00", time() + 60*60*24);
+		$condition = array(
+			'Log.created BETWEEN ? AND ?' => array(
+				$start,
+				$end
+			)
+		);
+		$this->Log->recursive = 0;
+		$this->set('logs', $this->paginate($condition));
 	}
 
 	public function add(){
