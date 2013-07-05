@@ -18,7 +18,7 @@ $cnt += 1;
 		 ?>
 	</td>
 	<td><?php echo h($log['Log']['title']); ?>&nbsp;</td>
-	<td><?php echo $this->Markdown->parse(h($log['Log']['content'])); ?>&nbsp;</td>
+	<td><?php echo h($log['Log']['content']); ?>&nbsp;</td>
 	<td class="actions">
 	  <?php echo $this->Html->link(__('View'), array('action' => 'view', $log['Log']['id'])); ?>
 	  <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $log['Log']['id'])); ?>

@@ -2,7 +2,7 @@
 
 class LogsController extends AppController{
 
-	public $helpers = array('Markdown');
+//	public $helpers = array('Markdown');
 
 	public function index(){
 		//3:00になったら表示をリセット
