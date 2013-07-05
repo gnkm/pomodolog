@@ -1,0 +1,3 @@
+[submodule "app/webroot/css/inuit"]
+	path = app/webroot/css/inuit
+	url = git://github.com/csswizardry/inuit.css.git

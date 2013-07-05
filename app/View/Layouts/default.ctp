@@ -30,7 +30,8 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('cake.generic');
+//		echo $this->Html->css('cake.generic');
+		echo $this->Html->css('inuit/inuit');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -44,6 +45,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		</div>
 		<div id="content">
 
+		  
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>
