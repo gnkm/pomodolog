@@ -1,3 +1,7 @@
 [submodule "app/webroot/css/inuit"]
 	path = app/webroot/css/inuit
 	url = git://github.com/csswizardry/inuit.css.git
+
+[submodule "app/Vendor/php-markdown"]
+	path = app/Vendor/php-markdown
+	url = git://github.com/michelf/php-markdown.git

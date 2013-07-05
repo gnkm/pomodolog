@@ -31,7 +31,12 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		echo $this->Html->meta('icon');
 
 //		echo $this->Html->css('cake.generic');
+
 		echo $this->Html->css('inuit/inuit');
+
+		echo $this->Html->css('inuit/css/style.min');
+
+
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -39,10 +44,18 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 	?>
 </head>
 <body>
-	<div id="container">
+	<div id="main">
+	<!-- <div id="container"> -->
+		<!-- <div id="header"> -->
+		<!-- 	<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1> -->
+		<!-- </div> -->
 		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
-		</div>
+          <ul class="nav nav--block top">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">記録する</a></li>
+            <li><a href="#">記録を見る</a></li>
+		  </ul>
+        </div>
 		<div id="content">
 
 		  

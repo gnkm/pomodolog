@@ -81,4 +81,14 @@ class Log extends AppModel {
 		)
 	);
 
+	/**
+	 * 指定期間のログを得る
+	 * @param string $start_day
+	 * @param int $type (0:day, 1:week, 2:month, 3:year)
+	 * @return array
+	 */
+	public function getLogs($start_day, $type){
+
+	}
+
 }
