@@ -27,3 +27,51 @@ $cnt += 1;
   </tr>
   <?php endforeach; ?>
 </table>
+
+<h1>Today</h1>
+<hr>
+<div class="form-group">
+  <label class="control-label">Title</label>
+  <div class="controls">
+    <input type="text" class="form-control">
+    <div class="form-group">
+      <label class="control-label">Content</label>
+      <div class="controls">
+        <input type="text" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Tag</label>
+      <div class="controls">
+        <input type="text" class="form-control">
+      </div>
+    </div>
+    <a class="btn btn-primary">Submit<br></a>
+  </div>
+</div>
+<table class="table table-hover table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>タイトル</th>
+      <th>詳細</th>
+      <th>タグ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+    $cnt = 1;
+    foreach ($logs as $log): 
+    ?>
+    <tr>
+      <td>
+	    <?php
+        echo $cnt;
+        $cnt += 1;
+		 ?>
+      </td>
+      <td>Michael</td>
+    </tr>
+  <?php endforeach; ?>
+  </tbody>
+</table>

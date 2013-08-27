@@ -87,8 +87,8 @@ class Log extends AppModel {
 	 * @param int $type (0:day, 1:week, 2:month, 3:year)
 	 * @return array
 	 */
-	public function getLogs($start_day, $type){
-
+	public function getLogs($start_day = null, $type = null){
+		return 0;
 	}
 
 }

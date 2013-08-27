@@ -19,6 +19,7 @@ class LogsController extends AppController{
 			)
 		);
 		$this->Log->recursive = 0;
+		$return = $this->Log->getLogs();
 		$this->set('logs', $this->paginate($condition));
 	}
 
