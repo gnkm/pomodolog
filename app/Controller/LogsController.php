@@ -18,9 +18,10 @@ class LogsController extends AppController{
 				$end
 			)
 		);
-		$this->Log->recursive = 0;
-		$return = $this->Log->getLogs();
-		$this->set('logs', $this->paginate($condition));
+//		$logs = $this->Log->getLogs();
+		$logs = $this->paginate($condition);
+		$user_id = $this->Auth->user('id');
+		$this->set(compact('logs', 'user_id'));
 	}
 
 	public function add(){
@@ -32,8 +33,6 @@ class LogsController extends AppController{
 				$this->session->setFlash('登録に失敗しちゃった');
 			}
 		}
-		$user_id = $this->Auth->user('id');
-		$this->set(compact('user_id'));
 	}
 
 	public function view($date, $terms){
