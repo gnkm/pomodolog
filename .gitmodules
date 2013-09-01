@@ -5,3 +5,6 @@
 [submodule "app/Vendor/php-markdown"]
 	path = app/Vendor/php-markdown
 	url = git://github.com/michelf/php-markdown.git
+[submodule "app/Plugin/Composer"]
+	path = app/Plugin/Composer
+	url = git://github.com/uzyn/cakephp-composer.git

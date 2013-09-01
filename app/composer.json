@@ -1,0 +1,26 @@
+{
+	"repositories": [
+		{
+			"type": "package",
+			"package": {
+				"name": "twbs/bootstrap",
+				"version": "dev-master",
+				"source": {
+					"url": "git://github.com/twbs/bootstrap",
+					"type": "git",
+					"reference": "master"
+				},
+				"require": {
+					"composer/installers": "*"
+				}
+			},
+			"packagist": false
+		}
+	],
+	"require": {
+		"cakephp/debug_kit": "2.2.*@dev",
+		"twbs/bootstrap": "dev-master",
+		"slywalker/twitter_bootstrap": "dev-master"
+	},
+	"config":{"vendor-dir":"Vendor"}
+}

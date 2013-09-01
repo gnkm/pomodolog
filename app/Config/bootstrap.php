@@ -72,6 +72,9 @@ Cache::config('default', array('engine' => 'File'));
  *
  */
 
+CakePlugin::load('Composer', array('bootstrap' => true));
+CakePlugin::load('TwitterBootstrap');
+
 /**
  * You can attach event listeners to the request lifecycle as Dispatcher Filter . By Default CakePHP bundles two filters:
  *

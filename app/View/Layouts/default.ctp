@@ -74,4 +74,6 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 	</div>
 	<?php echo $this->element('sql_dump'); ?>
 </body>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script>
 </html>
