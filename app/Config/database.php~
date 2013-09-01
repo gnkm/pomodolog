@@ -55,26 +55,15 @@
  */
 class DATABASE_CONFIG {
 
-	public $private_dev = array(
-		'datasource' => 'Database/Mysql',
-		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'matsunaga',
-		'password' => '1234',
-		'database' => 'pomodolog',
-		'prefix' => '',
-		'encoding' => 'utf8',
-	);
-
 	public $default = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => 'matsunaga',
-		'password' => '',
-		'database' => 'matsunaga_pomodolog',
+		'login' => 'user',
+		'password' => 'password',
+		'database' => 'database_name',
 		'prefix' => '',
-		'encoding' => 'utf8',
+		//'encoding' => 'utf8',
 	);
 
 	public $test = array(
