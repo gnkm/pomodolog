@@ -2,9 +2,8 @@
 <table cellpadding="0" cellspacing="0">
   <tr>
 	<th>No.</th>
-	<th><?php echo $this->Paginator->sort('title'); ?></th>
-	<th><?php echo $this->Paginator->sort('content'); ?></th>
-	<th class="actions"><?php echo __('Actions'); ?></th>
+    <th>Title</th>
+    <th>Content</th>
   </tr>
   <?php
 $cnt = 1;

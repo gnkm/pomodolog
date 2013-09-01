@@ -19,9 +19,21 @@ class LogsController extends AppController{
 			)
 		);
 //		$logs = $this->Log->getLogs();
-		$logs = $this->paginate($condition);
 		$user_id = $this->Auth->user('id');
-		$this->set(compact('logs', 'user_id'));
+		$logs = $this->Log->find(
+			'all',
+			array(
+				'conditions' => array(
+					'user_id' => $user_id,
+					'Log.created BETWEEN ? AND ?' => array(
+						$start,
+						$end
+					)
+				)
+			)
+		);
+		debug($logs);
+		$this->set(compact('user_id', 'logs'));
 	}
 
 	public function add(){
