@@ -75,6 +75,64 @@
         ]
     },
     {
+        "name": "twbs/bootstrap",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "git://github.com/twbs/bootstrap",
+            "reference": "master"
+        },
+        "require": {
+            "composer/installers": "*"
+        },
+        "type": "library",
+        "installation-source": "source"
+    },
+    {
+        "name": "slywalker/twitter_bootstrap",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/slywalker/TwitterBootstrap.git",
+            "reference": "7a2a9539af7b76da4c5dc387c79b7c27589f90b0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/slywalker/TwitterBootstrap/zipball/7a2a9539af7b76da4c5dc387c79b7c27589f90b0",
+            "reference": "7a2a9539af7b76da4c5dc387c79b7c27589f90b0",
+            "shasum": ""
+        },
+        "require": {
+            "composer/installers": "*",
+            "php": ">=5.3.0"
+        },
+        "suggest": {
+            "twitter/bootstrap": "Bootstrap for Twitter"
+        },
+        "time": "2013-09-02 10:09:29",
+        "type": "cakephp-plugin",
+        "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Yasuo Harada",
+                "email": "slywalker.net@gmail.com"
+            }
+        ],
+        "description": "CakePHP Bootstrap (for Twitter) Plugin",
+        "homepage": "https://github.com/slywalker/TwitterBootstrap",
+        "keywords": [
+            "bootstrap",
+            "cakephp",
+            "twitter"
+        ]
+    },
+    {
         "name": "cakephp/debug_kit",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
@@ -123,63 +181,5 @@
             "debug",
             "kit"
         ]
-    },
-    {
-        "name": "slywalker/twitter_bootstrap",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/slywalker/TwitterBootstrap.git",
-            "reference": "1a52a41983fb644ee54e2dfb97388c42ad555252"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/slywalker/TwitterBootstrap/zipball/1a52a41983fb644ee54e2dfb97388c42ad555252",
-            "reference": "1a52a41983fb644ee54e2dfb97388c42ad555252",
-            "shasum": ""
-        },
-        "require": {
-            "composer/installers": "*",
-            "php": ">=5.3.0"
-        },
-        "suggest": {
-            "twitter/bootstrap": "Bootstrap for Twitter"
-        },
-        "time": "2013-08-31 02:20:34",
-        "type": "cakephp-plugin",
-        "installation-source": "source",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Yasuo Harada",
-                "email": "slywalker.net@gmail.com"
-            }
-        ],
-        "description": "CakePHP Bootstrap (for Twitter) Plugin",
-        "homepage": "https://github.com/slywalker/TwitterBootstrap",
-        "keywords": [
-            "bootstrap",
-            "cakephp",
-            "twitter"
-        ]
-    },
-    {
-        "name": "twbs/bootstrap",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "git://github.com/twbs/bootstrap",
-            "reference": "master"
-        },
-        "require": {
-            "composer/installers": "*"
-        },
-        "type": "library",
-        "installation-source": "source"
     }
 ]

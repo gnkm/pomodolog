@@ -8,6 +8,10 @@
 /build
 /dist
 /tags
+*~
+composer.lock
+/app/Plugin/TwitterBootstrap
+/app/Plugin/DebugKit
 
 # OS generated files #
 ######################
@@ -19,5 +23,3 @@
 Icon?
 ehthumbs.db
 Thumbs.db
-
-*~
