@@ -18,7 +18,8 @@ class LogsController extends AppController{
 				$end
 			)
 		);
-//		$logs = $this->Log->getLogs();
+		$test_logs = $this->Log->getLogs();
+		debug($test_logs);
 		$user_id = $this->Auth->user('id');
 		$logs = $this->Log->find(
 			'all',
@@ -33,6 +34,8 @@ class LogsController extends AppController{
 			)
 		);
 		debug($logs);
+		debug($logs[0]['Log']['created']);
+		debug($this->Log->getEnd());
 		$this->set(compact('user_id', 'logs'));
 	}
 

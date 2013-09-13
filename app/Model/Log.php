@@ -8,6 +8,8 @@ App::uses('AppModel', 'Model');
  */
 class Log extends AppModel {
 
+	public $actsAs = array('Time');
+
 /**
  * Display field
  *
@@ -88,7 +90,8 @@ class Log extends AppModel {
 	 * @return array
 	 */
 	public function getLogs($start_day = null, $type = null){
-		return 0;
+		return $this->getEnd();
+		/* return 0; */
 	}
 
 }
