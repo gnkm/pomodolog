@@ -32,4 +32,32 @@ App::uses('Model', 'Model');
  * @package       app.Model
  */
 class AppModel extends Model {
+
+	/**
+	 * トランザクション開始
+	 *
+	 * @return void
+	 */
+	public function tpBegin() {
+		if (!$this->dataSource) {
+			$this->dataSource = $this->getDataSource();
+		}
+		$this->dataSource->begin();
+	}
+
+	/**
+	 * トランザクション終了
+	 *
+	 * @param bool $flg
+	 * @return bool
+	 */
+	public function tpFinish($flg) {
+		if ($flg) {
+			return $this->dataSource->commit();
+		} else {
+			$this->dataSource->rollback();
+			return false;
+		}
+	}
+
 }

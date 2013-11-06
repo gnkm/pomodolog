@@ -65,4 +65,18 @@ class Tag extends AppModel {
 		)
 	);
 
+/**
+ * hasAndBelongsToMany associations
+ *
+ * @var array
+ */
+	public $hasAndBelongsToMany = array(
+		'Log' => array(
+			'className' => 'Log',
+			'joinTable' => 'logs_tags',
+			'foreignKey' => 'tag_id',
+			'associationForeignKey' => 'log_id',
+		)
+	);
+
 }

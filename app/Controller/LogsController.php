@@ -42,12 +42,13 @@ class LogsController extends AppController{
 	public function add(){
 		if ($this->request->is('post')) {
 			$this->Log->create();
-			if($this->Log->save($this->request->data)) {
-				$this->redirect(array('controller' => 'logs', 'action' => 'index'));
+			if($this->Log->saveLogsAndTags($this->request->data)) {
+				$this->session->setFlash('登録しました');
 			} else {
 				$this->session->setFlash('登録に失敗しちゃった');
 			}
 		}
+		$this->redirect(array('controller' => 'logs', 'action' => 'index'));
 	}
 
 	public function view($date, $terms){

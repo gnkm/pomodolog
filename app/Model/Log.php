@@ -63,23 +63,16 @@ class Log extends AppModel {
 	);
 
 /**
- * hasMany associations
+ * hasAndBelongsToMany associations
  *
  * @var array
  */
-	public $hasMany = array(
-		'Logstag' => array(
-			'className' => 'Logstag',
+	public $hasAndBelongsToMany = array(
+		'Tag' => array(
+			'className' => 'Tag',
+			'joinTable' => 'logs_tags',
 			'foreignKey' => 'log_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
+			'associationForeignKey' => 'tag_id',
 		)
 	);
 
@@ -92,6 +85,41 @@ class Log extends AppModel {
 	public function getLogs($start_day = null, $type = null){
 		return $this->getEnd();
 		/* return 0; */
+	}
+
+	/**
+	 * logsテーブルとtagsテーブルにINSERT
+	 *
+	 * @param array $data
+	 * @return bool
+	 */
+	public function saveLogsAndTags ($data) {
+		$this->tpBegin();
+		$flg = true;
+		while ($flg) {
+			// logsテーブルにINSERT
+			$flg = $this->save($data);
+			if (!$flg) {
+				break;
+			}
+			$log_id = $this->getLastInsertID();
+
+			// tagsテーブルにINSERT
+			$tags = explode(",", trim($data['Log']['tag']));
+			$flg = $this->Tag->saveNewTags($tags);
+			if (!$flg) {
+				break;
+			}
+			// logs_tagsテーブルにINSERT
+			$save_tags = array();
+			foreach ($tags as $tag) {
+				$save_tags[] = $this->Tag->findByName($tag);
+			}
+			$flg = $this->LogsTag->saveMany(array($log_id), $save_tags);
+
+			break;
+		}
+		return $this->tpFinish($flg);
 	}
 
 }
