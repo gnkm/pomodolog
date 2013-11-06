@@ -63,6 +63,19 @@ class Log extends AppModel {
 	);
 
 /**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'LogsTag' => array(
+			'className' => 'LogsTag',
+			'foreignKey' => 'log_id',
+			'dependent' => false,
+		)
+	);
+
+/**
  * hasAndBelongsToMany associations
  *
  * @var array
@@ -110,12 +123,13 @@ class Log extends AppModel {
 			if (!$flg) {
 				break;
 			}
+
 			// logs_tagsテーブルにINSERT
 			$save_tags = array();
 			foreach ($tags as $tag) {
-				$save_tags[] = $this->Tag->findByName($tag);
+				$save_tags[] = $this->Tag->findByName(trim($tag));
 			}
-			$flg = $this->LogsTag->saveMany(array($log_id), $save_tags);
+			$flg = $this->LogsTag->saveMany($log_id, $save_tags);
 
 			break;
 		}

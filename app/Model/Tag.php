@@ -50,18 +50,10 @@ class Tag extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'Logstag' => array(
-			'className' => 'Logstag',
+		'LogsTag' => array(
+			'className' => 'LogsTag',
 			'foreignKey' => 'tag_id',
 			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
 		)
 	);
 
@@ -78,5 +70,35 @@ class Tag extends AppModel {
 			'associationForeignKey' => 'log_id',
 		)
 	);
+
+	/**
+	 * 新規タグをINSERTする
+	 *
+	 * @param array $tags
+	 * @return bool
+	 */
+	public function saveNewTags ($tags) {
+		// 新規タグを抽出
+		$new_tags = array();
+		foreach ($tags as $tag) {
+			$tag_info = $this->findByName(trim($tag));
+			if (empty($tag_info)) {
+				$new_tags[] = trim($tag);
+			}
+		}
+		// INSERT
+		$flg = true;
+		while ($flg) {
+			foreach ($new_tags as $tag) {
+				$this->create();
+				$flg = $this->save(array('name' => $tag));
+				if (!$flg) {
+					break 2;
+				}
+			}
+			break;
+		}
+		return $flg;
+	}
 
 }

@@ -1,7 +1,7 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * Logstag Model
+ * LogsTag Model
  *
  * @property Log $Log
  * @property Tag $Tag
@@ -38,4 +38,33 @@ class LogsTag extends AppModel {
 			'order' => ''
 		)
 	);
+
+	/**
+	 * logs_tagsテーブルにINSERT
+	 *
+	 * @param int $log_id
+	 * @param array $tags
+	 * @return bool
+	 */
+	public function saveMany($log_id, $tags) {
+		// フォーマット
+		$tag_ids = Hash::combine($tags, '{n}.Tag.id', '{n}.Tag.id');
+		$flg = true;
+		while ($flg) {
+			foreach ($tag_ids as $tag_id) {
+				$this->create();
+				$flg = $this->save(
+					array(
+						'log_id' => $log_id,
+						'tag_id' => $tag_id
+					)
+				);
+				if (!$flg) {
+					break 2;
+				}
+			}
+			break;
+		}
+		return $flg;
+	}
 }
