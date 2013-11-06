@@ -8,7 +8,7 @@ App::uses('AppModel', 'Model');
  */
 class Log extends AppModel {
 
-	public $actsAs = array('Time');
+	public $actsAs = array('Containable', 'Time');
 
 /**
  * Display field
@@ -91,13 +91,52 @@ class Log extends AppModel {
 
 	/**
 	 * 指定期間のログを得る
-	 * @param string $start_day
+	 *
+	 * @param int $user_id
+	 * @param string $start_date
 	 * @param int $type (0:day, 1:week, 2:month, 3:year)
 	 * @return array
 	 */
-	public function getLogs($start_day = null, $type = null){
-		return $this->getEnd();
-		/* return 0; */
+	public function getLogs($user_id, $start_date = null, $type = null){
+		if (is_null($start_date)) {
+			//3:00になったら表示をリセット
+			if (date("G") < 3) {
+				$start_time = time() - 60*60*24;
+				$start_date = date("Y-m-d 03:00:00", $start_time);
+			} else {
+				$start_time = time();
+				$start_date = date("Y-m-d 03:00:00", $start_time);
+			}
+		}
+		switch ($type) {
+			case 'd':
+				$end_date = date("Y-m-d 02:59:59", $start_time + 60*60*24);
+				break;
+				// Todo:あとで実装する
+			/* case 'w': */
+			/* 	break; */
+			/* case 'm': */
+			/* 	break; */
+			/* case 'y': */
+			/* 	break; */
+		}
+		return $this->find(
+			'all',
+			array(
+				'conditions' => array(
+					'Log.user_id' => $user_id,
+					'Log.created BETWEEN ? AND ?' => array($start_date, $end_date),
+					'Log.del_flg' => false
+				),
+				'contain' => array(
+					'Tag' => array(
+						'conditions' => array(
+							'Tag.del_flg' => false
+						)
+					)
+				)
+			)
+		);
 	}
 
 	/**
