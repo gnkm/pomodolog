@@ -5,14 +5,9 @@ class LogsController extends AppController{
 //	public $helpers = array('Markdown');
 
 	public function index(){
-		//3:00になったら表示をリセット
-		if (date("G") < 3) {
-			$start = date("Y-m-d 03:00:00", time() - 60*60*24);
-		} else {
-			$start = date("Y-m-d 03:00:00");
-		}
 		$user_id = $this->Auth->user('id');
-		$logs = $this->Log->getLogs($user_id, null, 'd');
+		$start_date = $end_date = date("Y-m-d");
+		$logs = $this->Log->getLogs($user_id, $start_date, $end_date);
 		$this->set(compact('user_id', 'logs'));
 	}
 
