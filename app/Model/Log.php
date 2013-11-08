@@ -94,32 +94,14 @@ class Log extends AppModel {
 	 *
 	 * @param int $user_id
 	 * @param string $start_date
-	 * @param int $type (0:day, 1:week, 2:month, 3:year)
+	 * @param string $end_date
 	 * @return array
 	 */
-	public function getLogs($user_id, $start_date = null, $type = null){
-		if (is_null($start_date)) {
-			//3:00になったら表示をリセット
-			if (date("G") < 3) {
-				$start_time = time() - 60*60*24;
-				$start_date = date("Y-m-d 03:00:00", $start_time);
-			} else {
-				$start_time = time();
-				$start_date = date("Y-m-d 03:00:00", $start_time);
-			}
-		}
-		switch ($type) {
-			case 'd':
-				$end_date = date("Y-m-d 02:59:59", $start_time + 60*60*24);
-				break;
-				// Todo:あとで実装する
-			/* case 'w': */
-			/* 	break; */
-			/* case 'm': */
-			/* 	break; */
-			/* case 'y': */
-			/* 	break; */
-		}
+	public function getLogs($user_id, $start_date, $end_date) {
+		$start_time = strtotime($start_date);
+		$start_date = date("Y-m-d 03:00:00", $start_time);
+		$end_time = strtotime($end_date) + 60*60*24;
+		$end_date = date("Y-m-d 02:59:00", $end_time);
 		return $this->find(
 			'all',
 			array(
@@ -137,6 +119,8 @@ class Log extends AppModel {
 				)
 			)
 		);
+
+
 	}
 
 	/**
