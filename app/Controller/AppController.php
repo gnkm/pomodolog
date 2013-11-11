@@ -47,6 +47,14 @@ class AppController extends Controller {
 					)
 				)
 			),
+			'flash' => array(
+				'element' => 'alert',
+				'key' => 'auth',
+				'params' => array(
+					'plugin' => 'BoostCake',
+					'class' => 'alert-error'
+				)
+			),
 			'loginRedirect' => array('controller' => 'logs', 'action' => 'index'),
 			'logoutRedirect' => array('controller' => 'users', 'action' => 'login')
 		)
@@ -54,9 +62,12 @@ class AppController extends Controller {
 
 	public $helpers = array(
 		'Session',
-		'Html' => array('className' => 'TwitterBootstrap.BootstrapHtml'),
-		'Form' => array('className' => 'TwitterBootstrap.BootstrapForm'),
-		'Paginator' => array('className' => 'TwitterBootstrap.BootstrapPaginator'),
+		/* 'Html' => array('className' => 'TwitterBootstrap.BootstrapHtml'), */
+		/* 'Form' => array('className' => 'TwitterBootstrap.BootstrapForm'), */
+		/* 'Paginator' => array('className' => 'TwitterBootstrap.BootstrapPaginator'), */
+		'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
+		'Form' => array('className' => 'BoostCake.BoostCakeForm'),
+		'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
 	);
 
 }

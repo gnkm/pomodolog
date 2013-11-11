@@ -40,6 +40,30 @@ class LogsTag extends AppModel {
 	);
 
 	/**
+	 * logs_tagsテーブルに複数の(log_id - tag_ids)の組合せでINSERTする
+	 *
+	 * @param array $log_ids
+	 * @param array $tags
+	 * @param int $iterate_num
+	 * @return bool
+	 */
+	public function saveManyLogsAndTags($log_ids, $tags, $iterate_num) {
+		$flg = true;
+		while ($flg) {
+			foreach ($log_ids as $log_id) {
+				for ($i = 0; $i < $iterate_num; $i++) {
+					$flg = $this->saveMany($log_id, $tags);
+					if (!$flg) {
+						break 3;
+					}
+				}
+			}
+			break;
+		}
+		return $flg;
+	}
+
+	/**
 	 * logs_tagsテーブルにINSERT
 	 *
 	 * @param int $log_id

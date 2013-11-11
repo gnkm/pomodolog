@@ -33,8 +33,8 @@
       </td>
 	  <td><?php echo h($log['Log']['created']); ?>&nbsp;</td>
       <td clas="actions">
-		<?php echo $this->Html->link('編集', array()); ?>
-		<?php echo $this->Html->link('削除', array()); ?>
+		<?php echo $this->Html->link('', array()); ?>
+		<?php echo $this->Html->link('', array()); ?>
       </td>
     </tr>
   <?php endforeach; ?>

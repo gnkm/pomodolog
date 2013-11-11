@@ -130,15 +130,19 @@ class Log extends AppModel {
 	 * @return bool
 	 */
 	public function saveLogsAndTags ($data) {
+		// parse title
+		$ret = $this->parseTitle($data['Log']['title']);
+		$data['Log']['title'] = $ret['title'];
+		$iterate_num = $ret['iterate_num'];
+
 		$this->tpBegin();
 		$flg = true;
 		while ($flg) {
 			// logsテーブルにINSERT
-			$flg = $this->save($data);
-			if (!$flg) {
+			$logs_result = $this->iterateSave($data, $iterate_num);
+			if (!$logs_result['flg']) {
 				break;
 			}
-			$log_id = $this->getLastInsertID();
 
 			// tagsテーブルにINSERT
 			$tags = explode(",", trim($data['Log']['tag']));
@@ -152,11 +156,59 @@ class Log extends AppModel {
 			foreach ($tags as $tag) {
 				$save_tags[] = $this->Tag->findByName(trim($tag));
 			}
-			$flg = $this->LogsTag->saveMany($log_id, $save_tags);
+			$flg = $this->LogsTag->saveManyLogsAndTags($logs_result['ids'], $save_tags, $iterate_num);
 
 			break;
 		}
 		return $this->tpFinish($flg);
 	}
 
+	/**
+	 * 1つのデータを複数のレコードとして登録する
+	 *
+	 * @param array $data
+	 * @param int $iterate_num
+	 * @return array
+	 */
+	public function iterateSave($data, $iterate_num) {
+		$flg = true;
+		while ($flg) {
+			foreach (range(1, $iterate_num) as $cnt) {
+				$this->create();
+				$flg = $this->save($data);
+				if ($flg) {
+					$ret['ids'][] = $this->getLastInsertId();
+				} else {
+					$ret['flg'] = false;
+					break;
+				}
+			}
+			$ret['flg'] = true;
+			break;
+		}
+		return $ret;
+	}
+
+	/**
+	 * Titleをパースし、繰り返し回数、タイトルを返す
+	 *
+	 * @param string $title
+	 * @return array
+	 */
+	private function parseTitle($title) {
+		$ret = array(
+			'title' => '',
+			'iterate_num'
+		);
+		$pattern = "/(.+)\[(\d+)pomo\]$/";
+		preg_match($pattern, $title, $matches);
+		if(!empty($matches)) {
+			$ret['title'] = $matches[1];
+			$ret['iterate_num'] = $matches[2];
+		} else {
+			$ret['title'] = $title;
+			$ret['iterate_num'] = 1;
+		}
+		return $ret;
+	}
 }
