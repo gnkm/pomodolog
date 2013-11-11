@@ -146,9 +146,11 @@ class Log extends AppModel {
 
 			// tagsテーブルにINSERT
 			$tags = explode(",", trim($data['Log']['tag']));
-			$flg = $this->Tag->saveNewTags($tags);
-			if (!$flg) {
-				break;
+			if (!empty($tags)) {
+				$flg = $this->Tag->saveNewTags($tags);
+				if (!$flg) {
+					break;
+				}
 			}
 
 			// logs_tagsテーブルにINSERT
@@ -156,7 +158,10 @@ class Log extends AppModel {
 			foreach ($tags as $tag) {
 				$save_tags[] = $this->Tag->findByName(trim($tag));
 			}
-			$flg = $this->LogsTag->saveManyLogsAndTags($logs_result['ids'], $save_tags, $iterate_num);
+
+			if (!empty($save_tags)) {
+				$flg = $this->LogsTag->saveManyLogsAndTags($logs_result['ids'], $save_tags, $iterate_num);
+			}
 
 			break;
 		}

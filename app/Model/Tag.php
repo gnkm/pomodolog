@@ -86,19 +86,23 @@ class Tag extends AppModel {
 				$new_tags[] = trim($tag);
 			}
 		}
-		// INSERT
-		$flg = true;
-		while ($flg) {
-			foreach ($new_tags as $tag) {
-				$this->create();
-				$flg = $this->save(array('name' => $tag));
-				if (!$flg) {
-					break 2;
+		if (!empty($new_tags)) {
+			return true;
+		} else {
+			// INSERT
+			$flg = true;
+			while ($flg) {
+				foreach ($new_tags as $tag) {
+					$this->create();
+					$flg = $this->save(array('name' => $tag));
+					if (!$flg) {
+						break 2;
+					}
 				}
+				break;
 			}
-			break;
+			return $flg;
 		}
-		return $flg;
 	}
 
 }
