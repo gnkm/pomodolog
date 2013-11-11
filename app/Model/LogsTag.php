@@ -51,11 +51,9 @@ class LogsTag extends AppModel {
 		$flg = true;
 		while ($flg) {
 			foreach ($log_ids as $log_id) {
-				for ($i = 0; $i < $iterate_num; $i++) {
-					$flg = $this->saveMany($log_id, $tags);
-					if (!$flg) {
-						break 3;
-					}
+				$flg = $this->saveMany($log_id, $tags);
+				if (!$flg) {
+					break 2;
 				}
 			}
 			break;
