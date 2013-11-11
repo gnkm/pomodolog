@@ -2,13 +2,11 @@
 
 class LogsController extends AppController{
 
-//	public $helpers = array('Markdown');
-
 	public function index(){
 		$user_id = $this->Auth->user('id');
 		$start_date = $end_date = date("Y-m-d");
 		$logs = $this->Log->getLogs($user_id, $start_date, $end_date);
-		$this->set(compact('user_id', 'logs'));
+		$this->set(compact('user_id', 'start_date', 'logs'));
 	}
 
 	public function add(){
@@ -33,6 +31,10 @@ class LogsController extends AppController{
 			}
 		}		
 		$this->redirect(array('controller' => 'logs', 'action' => 'index'));
+	}
+
+	public function calendar($date = null) {
+
 	}
 
 }
