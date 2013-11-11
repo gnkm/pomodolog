@@ -3,10 +3,10 @@
 		{
 			"type": "package",
 			"package": {
-				"name": "twbs/bootstrap",
+				"name": "twitter/bootstrap",
 				"version": "dev-master",
 				"source": {
-					"url": "git://github.com/twbs/bootstrap",
+					"url": "git://github.com/twitter/bootstrap",
 					"type": "git",
 					"reference": "master"
 				},
@@ -19,7 +19,7 @@
 	],
 	"require": {
 		"cakephp/debug_kit": "2.2.*@dev",
-		"twbs/bootstrap": "dev-master",
+		"twitter/bootstrap": "dev-master",
 		"slywalker/boost_cake": "*"
 	},
 	"config":{"vendor-dir":"Vendor"}

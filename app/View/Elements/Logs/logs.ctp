@@ -33,8 +33,12 @@
       </td>
 	  <td><?php echo h($log['Log']['created']); ?>&nbsp;</td>
       <td clas="actions">
-		<?php echo $this->Html->link('', array()); ?>
-		<?php echo $this->Html->link('', array()); ?>
+        <button type="button" class="btn btn-default btn-xs">
+          <span class="glyphicon glyphicon-pencil"></span> 編集
+        </button>
+        <button type="button" class="btn btn-default btn-xs">
+          <span class="glyphicon glyphicon-trash"></span> 削除
+        </button>
       </td>
     </tr>
   <?php endforeach; ?>

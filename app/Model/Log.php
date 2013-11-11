@@ -98,7 +98,11 @@ class Log extends AppModel {
 	 * @return array
 	 */
 	public function getLogs($user_id, $start_date, $end_date) {
-		$start_time = strtotime($start_date);
+		if (date('G') < 3) {
+			$start_time = strtotime($start_date) - 60*60*24;
+		} else {
+			$start_time = strtotime($start_date);
+		}
 		$start_date = date("Y-m-d 03:00:00", $start_time);
 		$end_time = strtotime($end_date) + 60*60*24;
 		$end_date = date("Y-m-d 02:59:00", $end_time);

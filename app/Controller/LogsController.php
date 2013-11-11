@@ -23,10 +23,16 @@ class LogsController extends AppController{
 		$this->redirect(array('controller' => 'logs', 'action' => 'index'));
 	}
 
-	public function view($date, $terms){
-	}
-
 	public function delete($id){
+		if ($this->request->is('post')) {
+			$this->Log->id = $id;
+			if ($this->Log->saveField('del_flg', true)) {
+				$this->Session->setFlash('削除しました');
+			} else {
+				$this->Session->setFlash('削除に失敗しちゃった');
+			}
+		}		
+		$this->redirect(array('controller' => 'logs', 'action' => 'index'));
 	}
 
 }

@@ -170,18 +170,17 @@
         ]
     },
     {
-        "name": "twbs/bootstrap",
+        "name": "twitter/bootstrap",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
-            "url": "git://github.com/twbs/bootstrap",
+            "url": "git://github.com/twitter/bootstrap",
             "reference": "master"
         },
         "require": {
             "composer/installers": "*"
         },
-        "time": "2013-11-07 02:38:27",
         "type": "library",
         "installation-source": "source"
     }
