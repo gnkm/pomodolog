@@ -57,7 +57,8 @@ class AppController extends Controller {
 			),
 			'loginRedirect' => array('controller' => 'logs', 'action' => 'index'),
 			'logoutRedirect' => array('controller' => 'users', 'action' => 'login')
-		)
+		),
+		'RequestHandler'
 	);
 
 	public $helpers = array(

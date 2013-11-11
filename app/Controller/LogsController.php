@@ -2,6 +2,9 @@
 
 class LogsController extends AppController{
 
+	/**
+	 * トップページ：当日のログを表示する
+	 */
 	public function index(){
 		$user_id = $this->Auth->user('id');
 		$start_date = $end_date = date("Y-m-d");
@@ -9,6 +12,9 @@ class LogsController extends AppController{
 		$this->set(compact('user_id', 'start_date', 'logs'));
 	}
 
+	/**
+	 * ログの追加
+	 */
 	public function add(){
 		if ($this->request->is('post')) {
 			$this->Log->create();
@@ -21,6 +27,9 @@ class LogsController extends AppController{
 		$this->redirect(array('controller' => 'logs', 'action' => 'index'));
 	}
 
+	/**
+	 * ログの削除
+	 */
 	public function delete($id){
 		if ($this->request->is('post')) {
 			$this->Log->id = $id;
@@ -33,8 +42,22 @@ class LogsController extends AppController{
 		$this->redirect(array('controller' => 'logs', 'action' => 'index'));
 	}
 
-	public function calendar($date = null) {
+	/**
+	 * カレンダーとその月のsummary, logを表示する
+	 *
+	 * @param string $date
+	 * @return void
+	 */
+	public function calendar($date = null, $user_id) {
 
+	}
+
+	/**
+	 * 指定期間のsummaryをjsonで返す
+	 */
+	public function summary($date, $user_id) {
+		$summary = array();
+		$this->set(compact('summary'));
 	}
 
 }
