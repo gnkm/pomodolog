@@ -76,6 +76,7 @@ CakePlugin::load('Composer', array('bootstrap' => true));
 /* CakePlugin::load('TwitterBootstrap'); */
 CakePlugin::load('DebugKit');
 CakePlugin::load('BoostCake');
+CakePlugin::load('Migrations');
 
 /**
  * You can attach event listeners to the request lifecycle as Dispatcher Filter . By Default CakePHP bundles two filters:
