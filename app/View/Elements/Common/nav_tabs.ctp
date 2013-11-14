@@ -5,4 +5,7 @@
   <li class="">
     <?php echo $this->Html->link('Calendar', array('controller' => 'logs', 'action' => 'index')); ?>
   </li>
+  <li class="">
+    <?php echo $this->Html->link('Timer', array('controller' => 'pages', 'action' => 'timer')); ?>
+  </li>
 </ul>

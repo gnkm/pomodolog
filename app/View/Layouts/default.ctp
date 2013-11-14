@@ -43,23 +43,13 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 </head>
   <body>
     <div class="container">
-      <div class="navbar">
-        <?php echo $this->Html->link('Pomodolog', array('controller' => 'logs', 'action' => 'index'), array('class' => 'navbar-brand')); ?>
-        <ul class="nav navbar-nav">
-          <li class="active">
-			<?php echo $this->Html->link('Today', array('controller' => 'logs', 'action' => 'index')); ?>
-          </li>
-          <li>
-            <a href="#">Weekly Review</a>
-          </li>
-          <li>
-            <a href="#">Monthly Review</a>
-          </li>
-          <li>
-            <a href="#">Annual Review</a>
-          </li>
-        </ul>
-      </div>
+      <?php
+		 if ($loggedIn) {
+			 echo $this->element('Common/navbar');
+		 } else {
+			 echo $this->element('Common/logout_navbar');
+		 }
+      ?>
 	  <div id="content">
 		<?php echo $this->Session->flash(); ?>
 		<?php echo $this->fetch('content'); ?>

@@ -71,4 +71,11 @@ class AppController extends Controller {
 		'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
 	);
 
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$login_user_id = $this->Auth->user('id');
+		$loggedIn = $this->Auth->loggedIn();
+		$this->set(compact('login_user_id', 'loggedIn'));
+	}
+
 }
