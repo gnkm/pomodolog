@@ -24,8 +24,8 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo $cakeDescription ?>:
-		<?php echo $title_for_layout; ?>
+      Pomodolog
+		<?php // echo $title_for_layout; ?>
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
@@ -44,10 +44,10 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
   <body>
     <div class="container">
       <div class="navbar">
-        <a href="#" class="navbar-brand">Pomodolog</a>
+        <?php echo $this->Html->link('Pomodolog', array('controller' => 'logs', 'action' => 'index'), array('class' => 'navbar-brand')); ?>
         <ul class="nav navbar-nav">
           <li class="active">
-            <a href="#">Today</a>
+			<?php echo $this->Html->link('Today', array('controller' => 'logs', 'action' => 'index')); ?>
           </li>
           <li>
             <a href="#">Weekly Review</a>
