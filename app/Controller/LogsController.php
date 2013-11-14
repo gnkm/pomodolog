@@ -28,6 +28,13 @@ class LogsController extends AppController{
 	}
 
 	/**
+	 * ログの編集
+	 */
+	public function edit ($id) {
+
+	}
+
+	/**
 	 * ログの削除
 	 */
 	public function delete($id){

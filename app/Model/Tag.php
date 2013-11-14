@@ -86,7 +86,7 @@ class Tag extends AppModel {
 				$new_tags[] = trim($tag);
 			}
 		}
-		if (!empty($new_tags)) {
+		if (empty($new_tags)) {
 			return true;
 		} else {
 			// INSERT
