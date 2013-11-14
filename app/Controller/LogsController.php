@@ -67,5 +67,13 @@ class LogsController extends AppController{
 		$this->set(compact('summary'));
 	}
 
+	/**
+	 * 指定期間のログを返す
+	 */
+	public function period($start_date, $end_date) {
+		$user_id = $this->Auth->user('id');
+		$logs = $this->Log->getLogs($user_id, $start_date, $end_date);
+		$this->set(compact('user_id', 'start_date', 'end_date', 'logs'));
+	}
 }
 ?>
